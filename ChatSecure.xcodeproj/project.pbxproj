@@ -243,7 +243,6 @@
 		639753AD18CA8550005D6063 /* OTRCertificateDomainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 639753AC18CA8550005D6063 /* OTRCertificateDomainViewController.m */; };
 		639753D918CA8961005D6063 /* OTRSecrets.m in Sources */ = {isa = PBXBuildFile; fileRef = 639753D818CA8961005D6063 /* OTRSecrets.m */; };
 		639753E318CA89E1005D6063 /* OTRXMPPTorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 639753E218CA89E1005D6063 /* OTRXMPPTorManager.m */; };
-		6398CD9517FA209A009389F8 /* XMPPCertificatePinning.m in Sources */ = {isa = PBXBuildFile; fileRef = 6398CD9417FA209A009389F8 /* XMPPCertificatePinning.m */; };
 		639C60A418CA974A00CC4DF4 /* XMPPXOAuth2Google.m in Sources */ = {isa = PBXBuildFile; fileRef = 639C60A318CA974A00CC4DF4 /* XMPPXOAuth2Google.m */; };
 		639C60A718CA980500CC4DF4 /* OTRBoolSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 639C60A618CA980500CC4DF4 /* OTRBoolSetting.m */; };
 		639C60AB18CA984500CC4DF4 /* OTRBuddyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 639C60AA18CA984400CC4DF4 /* OTRBuddyViewController.m */; };
@@ -906,8 +905,6 @@
 		639753DC18CA89A2005D6063 /* OTRSecrets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTRSecrets.h; sourceTree = "<group>"; };
 		639753E118CA89E1005D6063 /* OTRXMPPTorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTRXMPPTorManager.h; sourceTree = "<group>"; };
 		639753E218CA89E1005D6063 /* OTRXMPPTorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTRXMPPTorManager.m; sourceTree = "<group>"; };
-		6398CD9317FA209A009389F8 /* XMPPCertificatePinning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPCertificatePinning.h; sourceTree = "<group>"; };
-		6398CD9417FA209A009389F8 /* XMPPCertificatePinning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPCertificatePinning.m; sourceTree = "<group>"; };
 		639C60A218CA974A00CC4DF4 /* XMPPXOAuth2Google.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPXOAuth2Google.h; sourceTree = "<group>"; };
 		639C60A318CA974A00CC4DF4 /* XMPPXOAuth2Google.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPXOAuth2Google.m; sourceTree = "<group>"; };
 		639C60A518CA980500CC4DF4 /* OTRBoolSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTRBoolSetting.h; sourceTree = "<group>"; };
@@ -1434,7 +1431,6 @@
 		63483E241752CED100779257 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				6398CD9217FA209A009389F8 /* CertificatePinning */,
 				63483E251752CED100779257 /* BandwidthMonitor */,
 				63483E281752CED100779257 /* CoreDataStorage */,
 				63483E2C1752CED100779257 /* GoogleSharedStatus */,
@@ -2128,15 +2124,6 @@
 				63CAF8FB18FF270300C3337E /* YapDatabase Models */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		6398CD9217FA209A009389F8 /* CertificatePinning */ = {
-			isa = PBXGroup;
-			children = (
-				6398CD9317FA209A009389F8 /* XMPPCertificatePinning.h */,
-				6398CD9417FA209A009389F8 /* XMPPCertificatePinning.m */,
-			);
-			path = CertificatePinning;
 			sourceTree = "<group>";
 		};
 		639C60A118CA974A00CC4DF4 /* X-OAUTH2-google */ = {
@@ -3158,7 +3145,6 @@
 				63ACAFEA18CA73F100448508 /* GCDAsyncProxySocket.m in Sources */,
 				63483FBF1752CED100779257 /* XMPPvCardTempModule.m in Sources */,
 				63483FC01752CED100779257 /* XMPPvCardTempTel.m in Sources */,
-				6398CD9517FA209A009389F8 /* XMPPCertificatePinning.m in Sources */,
 				634357F919143FF70062FD26 /* OTRDatabasePassphraseViewController.m in Sources */,
 				63483FC11752CED100779257 /* NSXMLElement+XEP_0059.m in Sources */,
 				63483FC21752CED100779257 /* XMPPResultSet.m in Sources */,

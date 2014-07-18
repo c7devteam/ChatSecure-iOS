@@ -68,20 +68,18 @@ static id AFPublicKeyForCertificate(NSData *certificate) {
 
 @implementation OTRCertificatePinning
 
-- (id)initWithDefaultCertificates
+- (id)init
 {
     if (self = [super init]) {
-        self.securityPolicy = [AFSecurityPolicy defaultPolicy];
+        self.securityPolicy = [[AFSecurityPolicy alloc] init];
         self.securityPolicy.SSLPinningMode = AFSSLPinningModeCertificate;
+        self.securityPolicy.validatesCertificateChain = NO;
     }
     return self;
     
 }
 
 - (void)loadKeychainCertificatesWithHostName:(NSString *)hostname {
-    self.securityPolicy = [AFSecurityPolicy defaultPolicy];
-    self.securityPolicy.SSLPinningMode = AFSSLPinningModeCertificate;
-    
     NSMutableArray *allCertificatesArray = [NSMutableArray array];
     NSArray * hostnameCertificatesArray = [OTRCertificatePinning storedCertificatesWithHostName:hostname];
     [hostnameCertificatesArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -104,7 +102,7 @@ static id AFPublicKeyForCertificate(NSData *certificate) {
     }
     [self loadKeychainCertificatesWithHostName:hostname];
     
-    return [self.securityPolicy evaluateServerTrust:trust];
+    return [self.securityPolicy evaluateServerTrust:trust forDomain:hostname];
 }
 
 + (void)addCertificate:(SecCertificateRef)cert withHostName:(NSString *)hostname {
@@ -169,7 +167,7 @@ static id AFPublicKeyForCertificate(NSData *certificate) {
 }
 
 + (SecCertificateRef)certForTrust:(SecTrustRef)trust {
-    SecCertificateRef certificate = nil;
+    SecCertificateRef certificate = NULL;
     CFIndex certificateCount = SecTrustGetCertificateCount(trust);
     if (certificateCount) {
         certificate = SecTrustGetCertificateAtIndex(trust, 0);
@@ -315,11 +313,11 @@ static id AFPublicKeyForCertificate(NSData *certificate) {
     BOOL trusted = [self isValidPinnedTrust:trust withHostName:xmppStream.connectedHostName];
     if (!trusted) {
         //Delegate firing off for user to verify with status
-        SecTrustResultType result;
-        OSStatus status =  SecTrustEvaluate(trust, &result);
-        if ([self.delegate respondsToSelector:@selector(newTrust:withHostName:systemTrustResult:)] && status == noErr) {
-            [self.delegate newTrust:trust withHostName:xmppStream.connectedHostName systemTrustResult:result];
-        }
+        OSStatus status = SecTrustEvaluateAsync(trust, NULL, ^(SecTrustRef trustRef, SecTrustResultType trustResult) {
+            if ([self.delegate respondsToSelector:@selector(newTrust:withHostName:systemTrustResult:)] && status == noErr) {
+                [self.delegate newTrust:trust withHostName:xmppStream.connectedHostName systemTrustResult:trustResult];
+            }
+        });
     }
     completionHandler(trusted);
 }

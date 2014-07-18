@@ -986,7 +986,7 @@ managedBuddyObjectID
 - (OTRCertificatePinning *)certificatePinningModule
 {
     if(!_certificatePinningModule){
-        _certificatePinningModule = [OTRCertificatePinning defaultCertificates];
+        _certificatePinningModule = [[OTRCertificatePinning alloc] init];
         _certificatePinningModule.delegate = self;
     }
     return _certificatePinningModule;
@@ -996,13 +996,8 @@ managedBuddyObjectID
 {
     DDLogVerbose(@"New trust found");
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSData * certifcateData = [OTRCertificatePinning dataForCertificate:[OTRCertificatePinning certForTrust:trust]];
-        [self failedToConnect:[OTRXMPPError errorForTrustResult:trustResultType withCertData:certifcateData hostname:hostname]];
-    });
-    
-    
-    
+    NSData * certifcateData = [OTRCertificatePinning dataForCertificate:[OTRCertificatePinning certForTrust:trust]];
+    [self failedToConnect:[OTRXMPPError errorForTrustResult:trustResultType withCertData:certifcateData hostname:hostname]];
 }
 
 @end
