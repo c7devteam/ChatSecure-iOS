@@ -4,6 +4,7 @@ inhibit_all_warnings!
 
 source 'https://github.com/CocoaPods/Specs.git'
 
+pod "JNKeyChain"
 pod 'AFNetworking', '~> 2.4'
 pod "Appirater", '~> 2.0'
 pod 'OpenInChrome', '~> 0.0'
