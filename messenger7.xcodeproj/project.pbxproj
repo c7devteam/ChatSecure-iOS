@@ -516,10 +516,10 @@
 		633106761A16D1A300C17BAE /* OTRTitleSubtitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTRTitleSubtitleView.m; sourceTree = "<group>"; };
 		633107291A16D1F200C17BAE /* DemoImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = DemoImages.xcassets; path = Resources/DemoImages.xcassets; sourceTree = "<group>"; };
 		6331072A1A16D1F200C17BAE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Resources/Images.xcassets; sourceTree = "<group>"; };
-		6396AF9A1A169D54009F3E6C /* ChatSecure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatSecure.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6396AF9A1A169D54009F3E6C /* messenger7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = messenger7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6396AF9E1A169D54009F3E6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6396AF9F1A169D54009F3E6C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6396AFB31A169D54009F3E6C /* ChatSecureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatSecureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6396AFB31A169D54009F3E6C /* messenger7Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = messenger7Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6396AFB81A169D54009F3E6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6396AFB91A169D54009F3E6C /* ChatSecureTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatSecureTests.m; sourceTree = "<group>"; };
 		63C4BCC91A1E9B9F001696CD /* ChatSecure 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ChatSecure 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -1051,8 +1051,8 @@
 		6396AF9B1A169D54009F3E6C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6396AF9A1A169D54009F3E6C /* ChatSecure.app */,
-				6396AFB31A169D54009F3E6C /* ChatSecureTests.xctest */,
+				6396AF9A1A169D54009F3E6C /* messenger7.app */,
+				6396AFB31A169D54009F3E6C /* messenger7Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1202,9 +1202,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6396AF991A169D54009F3E6C /* ChatSecure */ = {
+		6396AF991A169D54009F3E6C /* messenger7 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6396AFBD1A169D54009F3E6C /* Build configuration list for PBXNativeTarget "ChatSecure" */;
+			buildConfigurationList = 6396AFBD1A169D54009F3E6C /* Build configuration list for PBXNativeTarget "messenger7" */;
 			buildPhases = (
 				C7FDC650D88ABA89D81EBBF7 /* Check Pods Manifest.lock */,
 				6396AF961A169D54009F3E6C /* Sources */,
@@ -1217,14 +1217,14 @@
 			);
 			dependencies = (
 			);
-			name = ChatSecure;
+			name = messenger7;
 			productName = ChatSecure;
-			productReference = 6396AF9A1A169D54009F3E6C /* ChatSecure.app */;
+			productReference = 6396AF9A1A169D54009F3E6C /* messenger7.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6396AFB21A169D54009F3E6C /* ChatSecureTests */ = {
+		6396AFB21A169D54009F3E6C /* messenger7Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6396AFC01A169D54009F3E6C /* Build configuration list for PBXNativeTarget "ChatSecureTests" */;
+			buildConfigurationList = 6396AFC01A169D54009F3E6C /* Build configuration list for PBXNativeTarget "messenger7Tests" */;
 			buildPhases = (
 				6396AFAF1A169D54009F3E6C /* Sources */,
 				6396AFB01A169D54009F3E6C /* Frameworks */,
@@ -1235,9 +1235,9 @@
 			dependencies = (
 				6396AFB51A169D54009F3E6C /* PBXTargetDependency */,
 			);
-			name = ChatSecureTests;
+			name = messenger7Tests;
 			productName = ChatSecureTests;
-			productReference = 6396AFB31A169D54009F3E6C /* ChatSecureTests.xctest */;
+			productReference = 6396AFB31A169D54009F3E6C /* messenger7Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1252,6 +1252,7 @@
 				TargetAttributes = {
 					6396AF991A169D54009F3E6C = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = D5EH3844W4;
 						SystemCapabilities = {
 							com.apple.DataProtection = {
 								enabled = 1;
@@ -1264,7 +1265,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6396AF951A169D54009F3E6C /* Build configuration list for PBXProject "ChatSecure" */;
+			buildConfigurationList = 6396AF951A169D54009F3E6C /* Build configuration list for PBXProject "messenger7" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1307,8 +1308,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6396AF991A169D54009F3E6C /* ChatSecure */,
-				6396AFB21A169D54009F3E6C /* ChatSecureTests */,
+				6396AF991A169D54009F3E6C /* messenger7 */,
+				6396AFB21A169D54009F3E6C /* messenger7Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -1576,7 +1577,7 @@
 /* Begin PBXTargetDependency section */
 		6396AFB51A169D54009F3E6C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6396AF991A169D54009F3E6C /* ChatSecure */;
+			target = 6396AF991A169D54009F3E6C /* messenger7 */;
 			targetProxy = 6396AFB41A169D54009F3E6C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1666,11 +1667,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_DISPLAY_NAME_SUFFIX = " β";
-				BUNDLE_ID_SUFFIX = .beta;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ChatSecure/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = messenger7;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Beta;
 		};
@@ -1684,7 +1687,7 @@
 				);
 				INFOPLIST_FILE = ChatSecureTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = messenger7Tests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatSecure.app/ChatSecure";
 			};
 			name = Beta;
@@ -1774,11 +1777,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_DISPLAY_NAME_SUFFIX = " α";
-				BUNDLE_ID_SUFFIX = .debug;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ChatSecure/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = messenger7;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1790,10 +1795,13 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_DISPLAY_NAME_SUFFIX = "";
 				BUNDLE_ID_SUFFIX = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ChatSecure/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = messenger7;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -1812,7 +1820,7 @@
 				);
 				INFOPLIST_FILE = ChatSecureTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = messenger7Tests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatSecure.app/ChatSecure";
 			};
 			name = Debug;
@@ -1827,7 +1835,7 @@
 				);
 				INFOPLIST_FILE = ChatSecureTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = messenger7Tests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatSecure.app/ChatSecure";
 			};
 			name = Release;
@@ -1835,7 +1843,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6396AF951A169D54009F3E6C /* Build configuration list for PBXProject "ChatSecure" */ = {
+		6396AF951A169D54009F3E6C /* Build configuration list for PBXProject "messenger7" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6396AFBB1A169D54009F3E6C /* Debug */,
@@ -1845,7 +1853,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6396AFBD1A169D54009F3E6C /* Build configuration list for PBXNativeTarget "ChatSecure" */ = {
+		6396AFBD1A169D54009F3E6C /* Build configuration list for PBXNativeTarget "messenger7" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6396AFBE1A169D54009F3E6C /* Debug */,
@@ -1855,7 +1863,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6396AFC01A169D54009F3E6C /* Build configuration list for PBXNativeTarget "ChatSecureTests" */ = {
+		6396AFC01A169D54009F3E6C /* Build configuration list for PBXNativeTarget "messenger7Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6396AFC11A169D54009F3E6C /* Debug */,
