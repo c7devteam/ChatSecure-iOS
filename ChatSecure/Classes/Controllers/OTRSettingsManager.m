@@ -64,41 +64,41 @@
 
 - (void) populateSettings
 {
-    NSMutableDictionary *newSettingsDictionary = [NSMutableDictionary dictionary];
+//    NSMutableDictionary *newSettingsDictionary = [NSMutableDictionary dictionary];
     // Leave this in for now
     OTRViewSetting *accountsViewSetting = [[OTRViewSetting alloc] initWithTitle:ACCOUNTS_STRING description:nil viewControllerClass:nil];
     OTRSettingsGroup *accountsGroup = [[OTRSettingsGroup alloc] initWithTitle:ACCOUNTS_STRING settings:[NSArray arrayWithObject:accountsViewSetting]];
     [self.settingsGroups addObject:accountsGroup];
     
-    OTRBoolSetting *deletedDisconnectedConversations = [[OTRBoolSetting alloc] initWithTitle:DELETE_CONVERSATIONS_ON_DISCONNECT_TITLE_STRING
-                                                                                 description:DELETE_CONVERSATIONS_ON_DISCONNECT_DESCRIPTION_STRING
-                                                                                 settingsKey:kOTRSettingKeyDeleteOnDisconnect];
+//    OTRBoolSetting *deletedDisconnectedConversations = [[OTRBoolSetting alloc] initWithTitle:DELETE_CONVERSATIONS_ON_DISCONNECT_TITLE_STRING
+//                                                                                 description:DELETE_CONVERSATIONS_ON_DISCONNECT_DESCRIPTION_STRING
+//                                                                                 settingsKey:kOTRSettingKeyDeleteOnDisconnect];
     
-    [newSettingsDictionary setObject:deletedDisconnectedConversations forKey:kOTRSettingKeyDeleteOnDisconnect];
+//    [newSettingsDictionary setObject:deletedDisconnectedConversations forKey:kOTRSettingKeyDeleteOnDisconnect];
     
-    OTRBoolSetting *showDisconnectionWarning = [[OTRBoolSetting alloc] initWithTitle:DISCONNECTION_WARNING_TITLE_STRING
-                                                                         description:DISCONNECTION_WARNING_DESC_STRING
-                                                                         settingsKey:kOTRSettingKeyShowDisconnectionWarning];
-    showDisconnectionWarning.defaultValue = @(NO);
-    [newSettingsDictionary setObject:showDisconnectionWarning forKey:kOTRSettingKeyShowDisconnectionWarning];
+//    OTRBoolSetting *showDisconnectionWarning = [[OTRBoolSetting alloc] initWithTitle:DISCONNECTION_WARNING_TITLE_STRING
+//                                                                         description:DISCONNECTION_WARNING_DESC_STRING
+//                                                                         settingsKey:kOTRSettingKeyShowDisconnectionWarning];
+//    showDisconnectionWarning.defaultValue = @(NO);
+//    [newSettingsDictionary setObject:showDisconnectionWarning forKey:kOTRSettingKeyShowDisconnectionWarning];
     
-    OTRBoolSetting *opportunisticOtrSetting = [[OTRBoolSetting alloc] initWithTitle:OPPORTUNISTIC_OTR_SETTING_TITLE
-                                                                        description:OPPORTUNISTIC_OTR_SETTING_DESCRIPTION
-                                                                        settingsKey:kOTRSettingKeyOpportunisticOtr];
-    opportunisticOtrSetting.defaultValue = @(YES);
-    [newSettingsDictionary setObject:opportunisticOtrSetting forKey:kOTRSettingKeyOpportunisticOtr];
+//    OTRBoolSetting *opportunisticOtrSetting = [[OTRBoolSetting alloc] initWithTitle:OPPORTUNISTIC_OTR_SETTING_TITLE
+//                                                                        description:OPPORTUNISTIC_OTR_SETTING_DESCRIPTION
+//                                                                        settingsKey:kOTRSettingKeyOpportunisticOtr];
+//    opportunisticOtrSetting.defaultValue = @(YES);
+//    [newSettingsDictionary setObject:opportunisticOtrSetting forKey:kOTRSettingKeyOpportunisticOtr];
     
-    OTRCertificateSetting * certSetting = [[OTRCertificateSetting alloc] initWithTitle:PINNED_CERTIFICATES_STRING
-                                                                           description:PINNED_CERTIFICATES_DESCRIPTION_STRING];
+//    OTRCertificateSetting * certSetting = [[OTRCertificateSetting alloc] initWithTitle:PINNED_CERTIFICATES_STRING
+//                                                                           description:PINNED_CERTIFICATES_DESCRIPTION_STRING];
     
-    certSetting.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    certSetting.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    OTRFingerprintSetting * fingerprintSetting = [[OTRFingerprintSetting alloc] initWithTitle:OTR_FINGERPRINTS_STRING
-                                                                                  description:OTR_FINGERPRINTS_SUBTITLE_STRING];
-    fingerprintSetting.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    OTRFingerprintSetting * fingerprintSetting = [[OTRFingerprintSetting alloc] initWithTitle:OTR_FINGERPRINTS_STRING
+//                                                                                  description:OTR_FINGERPRINTS_SUBTITLE_STRING];
+//    fingerprintSetting.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    OTRViewSetting *changeDatabasePassphraseSetting = [[OTRViewSetting alloc] initWithTitle:CHANGE_PASSPHRASE_STRING description:SET_NEW_DATABASE_PASSPHRASE_STRING viewControllerClass:[OTRChangeDatabasePassphraseViewController class]];
-    changeDatabasePassphraseSetting.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    OTRViewSetting *changeDatabasePassphraseSetting = [[OTRViewSetting alloc] initWithTitle:CHANGE_PASSPHRASE_STRING description:SET_NEW_DATABASE_PASSPHRASE_STRING viewControllerClass:[OTRChangeDatabasePassphraseViewController class]];
+//    changeDatabasePassphraseSetting.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
 #if CHATSECURE_PUSH
     OTRViewSetting *pushViewSetting = [[OTRPushViewSetting alloc] initWithTitle:CHATSECURE_PUSH_STRING description:MANAGE_CHATSECURE_PUSH_ACCOUNT_STRING];
@@ -107,38 +107,45 @@
     [settingsGroups addObject:pushGroup];
 #endif
     
-    NSArray *chatSettings;
-    NSArray * securitySettings;
+//    NSArray *chatSettings;
+//    NSArray * securitySettings;
     
     
-    chatSettings = [NSArray arrayWithObjects:deletedDisconnectedConversations, showDisconnectionWarning, nil];
+//    chatSettings = [NSArray arrayWithObjects:deletedDisconnectedConversations, showDisconnectionWarning, nil];
     
-    OTRSettingsGroup *chatSettingsGroup = [[OTRSettingsGroup alloc] initWithTitle:CHAT_STRING settings:chatSettings];
-    [self.settingsGroups addObject:chatSettingsGroup];
+//    OTRSettingsGroup *chatSettingsGroup = [[OTRSettingsGroup alloc] initWithTitle:CHAT_STRING settings:chatSettings];
+//    [self.settingsGroups addObject:chatSettingsGroup];
     
-    securitySettings = @[opportunisticOtrSetting,certSetting,fingerprintSetting, changeDatabasePassphraseSetting];
-    OTRSettingsGroup *securitySettingsGroup = [[OTRSettingsGroup alloc] initWithTitle:SECURITY_STRING settings:securitySettings];
-    [self.settingsGroups addObject:securitySettingsGroup];
+//    securitySettings = @[opportunisticOtrSetting,certSetting,fingerprintSetting, changeDatabasePassphraseSetting];
+//    OTRSettingsGroup *securitySettingsGroup = [[OTRSettingsGroup alloc] initWithTitle:SECURITY_STRING settings:securitySettings];
+//    [self.settingsGroups addObject:securitySettingsGroup];
     
-    OTRFeedbackSetting * feedbackViewSetting = [[OTRFeedbackSetting alloc] initWithTitle:SEND_FEEDBACK_STRING description:nil];
-    feedbackViewSetting.imageName = @"18-envelope.png";
+//    OTRFeedbackSetting * feedbackViewSetting = [[OTRFeedbackSetting alloc] initWithTitle:SEND_FEEDBACK_STRING description:nil];
+//    feedbackViewSetting.imageName = @"18-envelope.png";
     
-    OTRShareSetting * shareViewSetting = [[OTRShareSetting alloc] initWithTitle:SHARE_STRING description:nil];
-    shareViewSetting.imageName = @"275-broadcast.png";
+//    OTRShareSetting * shareViewSetting = [[OTRShareSetting alloc] initWithTitle:SHARE_STRING description:nil];
+//    shareViewSetting.imageName = @"275-broadcast.png";
     
-    OTRLanguageSetting * languageSetting = [[OTRLanguageSetting alloc]initWithTitle:LANGUAGE_STRING description:nil settingsKey:kOTRSettingKeyLanguage];
-    languageSetting.imageName = @"globe.png";
+//    OTRLanguageSetting * languageSetting = [[OTRLanguageSetting alloc]initWithTitle:LANGUAGE_STRING description:nil settingsKey:kOTRSettingKeyLanguage];
+//    languageSetting.imageName = @"globe.png";
     
     
     
-    OTRDonateSetting *donateSetting = [[OTRDonateSetting alloc] initWithTitle:DONATE_STRING description:nil];
-    donateSetting.imageName = @"29-heart.png";
+//    OTRDonateSetting *donateSetting = [[OTRDonateSetting alloc] initWithTitle:DONATE_STRING description:nil];
+//    donateSetting.imageName = @"29-heart.png";
     
-    NSMutableArray *otherSettings = [NSMutableArray arrayWithCapacity:5];
-    [otherSettings addObjectsFromArray:@[languageSetting,donateSetting, shareViewSetting,feedbackViewSetting]];
-    OTRSettingsGroup *otherGroup = [[OTRSettingsGroup alloc] initWithTitle:OTHER_STRING settings:otherSettings];
-    [self.settingsGroups addObject:otherGroup];
-    self.settingsDictionary = newSettingsDictionary;
+//    NSMutableArray *otherSettings = [NSMutableArray arrayWithCapacity:5];
+//    [otherSettings addObjectsFromArray:@[languageSetting,donateSetting, shareViewSetting,feedbackViewSetting]];
+    
+    
+    
+//    [otherSettings addObjectsFromArray:@[languageSetting,shareViewSetting,feedbackViewSetting]];
+//    OTRSettingsGroup *otherGroup = [[OTRSettingsGroup alloc] initWithTitle:OTHER_STRING settings:otherSettings];
+//    [self.settingsGroups addObject:otherGroup];
+    
+    
+    
+//    self.settingsDictionary = newSettingsDictionary;
 }
 
 - (OTRSetting*) settingAtIndexPath:(NSIndexPath*)indexPath

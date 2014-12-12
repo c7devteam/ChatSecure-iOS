@@ -107,9 +107,9 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     [self.view addSubview:self.tableView];
     
-    UIBarButtonItem *aboutButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"OTRInfoIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showAboutScreen)];
+//    UIBarButtonItem *aboutButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"OTRInfoIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showAboutScreen)];
 
-    self.navigationItem.rightBarButtonItem = aboutButton;
+//    self.navigationItem.rightBarButtonItem = aboutButton;
 }
 
 
@@ -136,7 +136,8 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        if ([keyPath isEqualToString:NSStringFromSelector(@selector(numberOfConnectedProtocols))] || [keyPath isEqualToString:NSStringFromSelector(@selector(numberOfConnectingProtocols))]) {
+        if ([keyPath isEqualToString:NSStringFromSelector(@selector(numberOfConnectedProtocols))] || [keyPath isEqualToString:NSStringFromSelector(@selector(numberOfConnectingProtocols))])
+        {
             [self.tableView reloadSections:[[NSIndexSet alloc] initWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
         }
     });
@@ -145,9 +146,12 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
         return YES;
-    } else {
+    }
+    else
+    {
         return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
     }
 }
@@ -179,35 +183,43 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) { // Accounts 
+    if (indexPath.section == 0)
+    { // Accounts
         static NSString *accountCellIdentifier = @"accountCellIdentifier";
         static NSString *addAccountCellIdentifier = @"addAccountCellIdentifier";
         UITableViewCell * cell = nil;
-        if (indexPath.row == [self.mappings numberOfItemsInSection:indexPath.section]) {
+        if (indexPath.row == [self.mappings numberOfItemsInSection:indexPath.section])
+        {
             cell = [tableView dequeueReusableCellWithIdentifier:addAccountCellIdentifier];
-            if (cell == nil) {
+            if (cell == nil)
+            {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:addAccountCellIdentifier];
                 cell.textLabel.text = NEW_ACCOUNT_STRING;
                 cell.imageView.image = [UIImage imageNamed:circleImageName];
                 cell.detailTextLabel.text = nil;
             }
         }
-        else {
+        else
+        {
             OTRAccount *account = [self accountAtIndexPath:indexPath];
             OTRAccountTableViewCell *accountCell = (OTRAccountTableViewCell*)[tableView dequeueReusableCellWithIdentifier:accountCellIdentifier];
-            if (accountCell == nil) {
+            if (accountCell == nil)
+            {
                 accountCell = [[OTRAccountTableViewCell alloc] initWithReuseIdentifier:accountCellIdentifier];
             }
             
             [accountCell setAccount:account];
             
-            if ([[OTRProtocolManager sharedInstance] existsProtocolForAccount:account]) {
+            if ([[OTRProtocolManager sharedInstance] existsProtocolForAccount:account])
+            {
                 id <OTRProtocol> protocol = [[OTRProtocolManager sharedInstance] protocolForAccount:account];
-                if (protocol) {
+                if (protocol)
+                {
                     [accountCell setConnectedText:[protocol connectionStatus]];
                 }
             }
-            else {
+            else
+            {
                 [accountCell setConnectedText:OTRProtocolConnectionStatusDisconnected];
             }
 
@@ -215,12 +227,15 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
         }
         return cell;
     }
+    
     static NSString *cellIdentifier = @"Cell";
+    
     OTRSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 	if (cell == nil)
 	{
 		cell = [[OTRSettingTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
 	}
+    
     OTRSetting *setting = [self.settingsManager settingAtIndexPath:indexPath];
     setting.delegate = self;
     cell.otrSetting = setting;
@@ -235,7 +250,8 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    if (sectionIndex == 0) {
+    if (sectionIndex == 0)
+    {
         return [self.mappings numberOfItemsInSection:0]+1;
     }
     return [self.settingsManager numberOfSettingsInSection:sectionIndex];
@@ -253,23 +269,33 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) { // Accounts
-        if (indexPath.row == [self.mappings numberOfItemsInSection:0]) {
+    if (indexPath.section == 0)
+    { // Accounts
+        if (indexPath.row == [self.mappings numberOfItemsInSection:0])
+        {
             [self addAccount:[tableView cellForRowAtIndexPath:indexPath]];
-        } else {
+        }
+        else
+        {
             OTRAccount *account = [self accountAtIndexPath:indexPath];
             
             BOOL connected = [[OTRProtocolManager sharedInstance] isAccountConnected:account];
-            if (!connected) {
+            if (!connected)
+            {
                 [self showLoginControllerForAccount:account];
-            } else {
+            }
+            else
+            {
                 [self logoutAccount:account sender:[tableView cellForRowAtIndexPath:indexPath]];
             }
         }
-    } else {
+    }
+    else
+    {
         OTRSetting *setting = [self.settingsManager settingAtIndexPath:indexPath];
         OTRSettingActionBlock actionBlock = setting.actionBlock;
-        if (actionBlock) {
+        if (actionBlock)
+        {
             actionBlock();
         }
     }
@@ -278,7 +304,8 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section != 0) {
+    if (indexPath.section != 0)
+    {
         return;
     }
     if (editingStyle == UITableViewCellEditingStyleDelete) 
@@ -305,7 +332,8 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
 
 #pragma - mark Other Methods
 
-- (void) showLoginControllerForAccount:(OTRAccount *)account {
+- (void) showLoginControllerForAccount:(OTRAccount *)account
+{
     OTRLoginViewController *loginViewController = [OTRLoginViewController loginViewControllerWithAcccount:account];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginViewController];
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
@@ -318,12 +346,14 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
 {
     OTRAboutViewController *aboutController = [[OTRAboutViewController alloc] init];
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:aboutController];
         navController.modalPresentationStyle = UIModalPresentationFormSheet;
         [self.navigationController presentViewController:navController animated:YES completion:nil];
     }
-    else {
+    else
+    {
        [self.navigationController pushViewController:aboutController animated:YES];
     }
     
@@ -331,7 +361,8 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
 
 - (void)logoutAccount:(OTRAccount *)account sender:(id)sender
 {
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
+    {
         
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:LOGOUT_STRING message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *cancelAlertAction = [UIAlertAction actionWithTitle:CANCEL_STRING style:UIAlertActionStyleCancel handler:nil];
@@ -364,7 +395,8 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
     }
 }
 
-- (void) addAccount:(id)sender {
+- (void) addAccount:(id)sender
+{
     
     void (^createAccountBlock)(void) = ^void(void) {
         OTRCreateAccountChooserViewController * createAccountChooser = [[OTRCreateAccountChooserViewController alloc] init];
@@ -381,12 +413,13 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
         [self presentViewController:nav animated:YES completion:nil];
     };
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
+    {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NEW_ACCOUNT_STRING message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:CANCEL_STRING style:UIAlertActionStyleCancel handler:nil];
         
         UIAlertAction *createAccountAction = [UIAlertAction actionWithTitle:CREATE_NEW_ACCOUNT_STRING style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            createAccountBlock();
+//            createAccountBlock();
         }];
         
         UIAlertAction *loginAccountAction = [UIAlertAction actionWithTitle:CONNECT_EXISTING_STRING style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -397,7 +430,8 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
         [alertController addAction:loginAccountAction];
         [alertController addAction:cancelAction];
         
-        if ([sender isKindOfClass:[UIView class]]) {
+        if ([sender isKindOfClass:[UIView class]])
+        {
             UIView *senderView = (UIView *)sender;
             alertController.popoverPresentationController.sourceRect = senderView.bounds;
             alertController.popoverPresentationController.sourceView = senderView;
@@ -405,7 +439,8 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
         
         [self presentViewController:alertController animated:YES completion:nil];
     }
-    else {
+    else
+    {
         RIButtonItem *cancelButton = [RIButtonItem itemWithLabel:CANCEL_STRING];
         RIButtonItem *createAccountButton = [RIButtonItem itemWithLabel:CREATE_NEW_ACCOUNT_STRING action:createAccountBlock];
         RIButtonItem *loginAccountButton = [RIButtonItem itemWithLabel:CONNECT_EXISTING_STRING action:connectAccountBlock];
@@ -439,17 +474,21 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailSettingViewController];
         navController.modalPresentationStyle = UIModalPresentationFormSheet;
         [self presentViewController:navController animated:YES completion:nil];
-    } else {
+    }
+    else
+    {
         [self.navigationController pushViewController:viewController animated:YES];
     }
 }
 
-- (void) donateSettingPressed:(OTRDonateSetting *)setting {
+- (void) donateSettingPressed:(OTRDonateSetting *)setting
+{
     
     NSURL *paypalURL = [NSURL URLWithString:@"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6YFSLLQGDZFXY"];
     NSURL *bitcoinURL = [NSURL URLWithString:@"https://coinbase.com/checkouts/0a35048913df24e0ec3d586734d456d7"];
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
+    {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:DONATE_MESSAGE_STRING message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         
         UIAlertAction *paypalAlertAction = [UIAlertAction actionWithTitle:@"PayPal" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -473,7 +512,8 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
         
         [self presentViewController:alertController animated:YES completion:nil];
     }
-    else {
+    else
+    {
         RIButtonItem *paypalItem = [RIButtonItem itemWithLabel:@"PayPal" action:^{
             [[UIApplication sharedApplication] openURL:paypalURL];
         }];
@@ -498,7 +538,8 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
     
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[self indexPathForSetting:shareSetting]];
     
-    if( SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+    if( SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
+    {
         activityViewController.popoverPresentationController.sourceView = cell;
         activityViewController.popoverPresentationController.sourceRect = cell.bounds;
     }
@@ -509,9 +550,11 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
 
 #pragma mark OTRFeedbackSettingDelegate method
 
-- (void) presentUserVoiceViewForSetting:(OTRSetting *)setting {
+- (void) presentUserVoiceViewForSetting:(OTRSetting *)setting
+{
     
-    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
+    {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:SHOW_USERVOICE_STRING message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *cancelAlertAction = [UIAlertAction actionWithTitle:CANCEL_STRING style:UIAlertActionStyleCancel handler:nil];
         UIAlertAction *showUserVoiceAlertAction = [UIAlertAction actionWithTitle:OK_STRING style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -529,7 +572,8 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
         
         [self presentViewController:alertController animated:YES completion:nil];
     }
-    else {
+    else
+    {
         RIButtonItem *cancelItem = [RIButtonItem itemWithLabel:CANCEL_STRING];
         RIButtonItem *showUVItem = [RIButtonItem itemWithLabel:OK_STRING action:^{
             UVConfig *config = [UVConfig configWithSite:@"chatsecure.uservoice.com"];

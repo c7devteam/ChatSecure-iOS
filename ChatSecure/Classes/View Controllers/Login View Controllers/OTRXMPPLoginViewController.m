@@ -31,6 +31,8 @@
 #import "OTRXMPPAccount.h"
 #import "OTRXMPPManager.h"
 #import "OTRLog.h"
+#import "AFNetworking.h"
+
 
 
 @interface OTRXMPPLoginViewController ()
@@ -42,9 +44,12 @@
 
 @implementation OTRXMPPLoginViewController
 
+#pragma mark - ViewLifeCycle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
     
     self.resourceTextField = [[UITextField alloc] init];
     self.resourceTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -77,20 +82,28 @@
     } completion:nil];
 }
 
-- (BOOL)isTorAccount{
-    if ([self.account isKindOfClass:[OTRXMPPTorAccount class]]) {
-        return YES;
-    }
+- (BOOL)isTorAccount
+{
+//    if ([self.account isKindOfClass:[OTRXMPPTorAccount class]])
+//    {
+//        return YES;
+//    }
+//    return NO;
+    
+//    return [self.account isKindOfClass:[OTRXMPPTorAccount class]];
+    
     return NO;
 }
 
 - (void)readInFields
 {
     [super readInFields];
-    if (self.resourceTextField.text.length) {
+    if (self.resourceTextField.text.length)
+    {
         self.account.resource = self.resourceTextField.text;
     }
-    else {
+    else
+    {
         self.account.resource = [OTRXMPPAccount newResource];
     }
     
@@ -112,7 +125,8 @@
     [self.usernameTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
     self.loginButtonPressed = NO;
-    if (self.isTorAccount) {
+    if (self.isTorAccount)
+    {
         [[OTRTorManager sharedInstance].torManager addObserver:self forKeyPath:NSStringFromSelector(@selector(status)) options:NSKeyValueObservingOptionNew context:NULL];
     }
 }
@@ -123,6 +137,7 @@
     {
         [[OTRTorManager sharedInstance].torManager removeObserver:self forKeyPath:NSStringFromSelector(@selector(status))];
     }
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                               name:UIKeyboardWillHideNotification
                                                   object:nil];
@@ -134,30 +149,36 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if ([keyPath isEqualToString:NSStringFromSelector(@selector(status))] && [object isEqual:[OTRTorManager sharedInstance].torManager]) {
-        if ([OTRTorManager sharedInstance].torManager.isConnected && self.loginButtonPressed) {
+    if ([keyPath isEqualToString:NSStringFromSelector(@selector(status))] && [object isEqual:[OTRTorManager sharedInstance].torManager])
+    {
+        if ([OTRTorManager sharedInstance].torManager.isConnected && self.loginButtonPressed)
+        {
             [self loginButtonPressed:nil];
         }
     }
 }
 
-- (void)protocolLoginFailed:(NSNotification *)notification {
+- (void)protocolLoginFailed:(NSNotification *)notification
+{
     [self hideHUD];
     NSError * error = notification.userInfo[kOTRNotificationErrorKey];
     
-    if (error.code == OTRXMPPSSLError) {
+    if (error.code == OTRXMPPSSLError)
+    {
         NSData * certData = error.userInfo[OTRXMPPSSLCertificateDataKey];
         NSString * hostname = error.userInfo[OTRXMPPSSLHostnameKey];
         uint32_t trustResultType = [error.userInfo[OTRXMPPSSLTrustResultKey] unsignedIntValue];
         
         [self showCertWarningForCertificateData:certData withHostname:hostname trustResultType:trustResultType];
     }
-    else if(!self.certAlertView.isVisible){
+    else if (!self.certAlertView.isVisible)
+    {
         [super protocolLoginFailed:notification];
     }
 }
 
-- (void)showCertWarningForCertificateData:(NSData *)certData withHostname:(NSString *)hostname trustResultType:(SecTrustResultType)resultType {
+- (void)showCertWarningForCertificateData:(NSData *)certData withHostname:(NSString *)hostname trustResultType:(SecTrustResultType)resultType
+{
     
     SecCertificateRef certificate = [OTRCertificatePinning certForData:certData];
     NSString * fingerprint = [OTRCertificatePinning sha1FingerprintForCertificate:certificate];
@@ -184,13 +205,16 @@
         }];
         
     }
-    else {
-        if (resultType == kSecTrustResultProceed || resultType == kSecTrustResultUnspecified) {
+    else
+    {
+        if (resultType == kSecTrustResultProceed || resultType == kSecTrustResultUnspecified)
+        {
             //#52A352
             sslMessageColor = [OTRColors greenNoErrorColor];
             message = [message stringByAppendingString:[NSString stringWithFormat:@"\n✓ %@",VALID_CERTIFICATE_STRING]];
         }
-        else {
+        else
+        {
             NSString * sslErrorMessage = [OTRXMPPError errorStringWithTrustResultType:resultType];
             sslMessageColor = [OTRColors redErrorColor];
             message = [message stringByAppendingString:[NSString stringWithFormat:@"\nX %@",sslErrorMessage]];
@@ -234,29 +258,41 @@
 - (void)loginButtonPressed:(id)sender
 {
     self.loginButtonPressed = YES;
-    if([self isTorAccount]) {
-        if([OTRTorManager sharedInstance].torManager.isConnected) {
-            [super loginButtonPressed:sender];
-        } else {
-            if ([OTRTorManager sharedInstance].torManager.status == CPAStatusConnecting) {
-                return;
-            }
-            [self showHUDWithText:CONNECTING_TO_TOR_STRING];
-            [[OTRTorManager sharedInstance].torManager setupWithCompletion:^(NSString *socksHost, NSUInteger socksPort, NSError *error) {
-                // TODO: handle Tor/SOCKS setup error
-                if (error) {
-                    DDLogError(@"Error setting up Tor: %@", error);
-                } else {
-                    // successfully connected to Tor
-                    [super loginButtonPressed:sender];
-                }
-            } progress:^(NSInteger progress, NSString *summaryString) {
-                self.HUD.mode = MBProgressHUDModeDeterminate;
-                self.HUD.labelText = summaryString;
-                self.HUD.progress = progress/100.0;
-            }];
-        }
-    } else {
+//    if([self isTorAccount])
+//    {
+//        if([OTRTorManager sharedInstance].torManager.isConnected)
+//        {
+//            [super loginButtonPressed:sender];
+//        }
+//        else
+//        {
+//            if ([OTRTorManager sharedInstance].torManager.status == CPAStatusConnecting)
+//            {
+//                return;
+//            }
+//            
+//            [self showHUDWithText:CONNECTING_TO_TOR_STRING];
+//            [[OTRTorManager sharedInstance].torManager setupWithCompletion:^(NSString *socksHost, NSUInteger socksPort, NSError *error) {
+//                // TODO: handle Tor/SOCKS setup error
+//                
+//                if (error)
+//                {
+//                    DDLogError(@"Error setting up Tor: %@", error);
+//                }
+//                else
+//                {
+//                    // successfully connected to Tor
+//                    [super loginButtonPressed:sender];
+//                }
+//            } progress:^(NSInteger progress, NSString *summaryString) {
+//                self.HUD.mode = MBProgressHUDModeDeterminate;
+//                self.HUD.labelText = summaryString;
+//                self.HUD.progress = progress/100.0;
+//            }];
+//        }
+//    }
+//    else
+    {
         [super loginButtonPressed:sender];
     }
 }

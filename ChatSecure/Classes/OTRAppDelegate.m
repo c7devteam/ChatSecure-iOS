@@ -107,7 +107,7 @@
                 DDLogError(@"Password Error: %@",error);
             }
         }
-
+        
         [[OTRDatabaseManager sharedInstance] setupDatabaseWithName:OTRYapDatabaseName];
         rootViewController = [self defaultConversationNavigationController];
         
@@ -116,43 +116,43 @@
         [self performSelector:@selector(loadDemoData) withObject:nil afterDelay:0.0];
 #endif
     }
-
-
-
-
+    
+    
+    
+    
     //rootViewController = [[OTRDatabaseUnlockViewController alloc] init];
-//    NSString *outputStoreName = @"ChatSecure.sqlite";
-//    [[OTRDatabaseManager sharedInstance] setupDatabaseWithName:outputStoreName];
-//    
-//    [[OTRDatabaseManager sharedInstance].readWriteDatabaseConnection readWriteWithBlock:^(YapDatabaseReadWriteTransaction *transaction) {
-//        NSArray *allAccounts = [OTRAccount allAccountsWithTransaction:transaction];
-//        NSArray *allAccountsToDelete = [allAccounts filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-//            if ([evaluatedObject isKindOfClass:[OTRAccount class]]) {
-//                OTRAccount *account = (OTRAccount *)evaluatedObject;
-//                if (![account.username length]) {
-//                    return YES;
-//                }
-//            }
-//            return NO;
-//        }]];
-//        
-//        [transaction removeObjectsForKeys:[allAccountsToDelete valueForKey:OTRYapDatabaseObjectAttributes.uniqueId] inCollection:[OTRAccount collection]];
-//        //FIXME? [OTRManagedAccount resetAccountsConnectionStatus];
-//    }];
-
+    //    NSString *outputStoreName = @"ChatSecure.sqlite";
+    //    [[OTRDatabaseManager sharedInstance] setupDatabaseWithName:outputStoreName];
+    //
+    //    [[OTRDatabaseManager sharedInstance].readWriteDatabaseConnection readWriteWithBlock:^(YapDatabaseReadWriteTransaction *transaction) {
+    //        NSArray *allAccounts = [OTRAccount allAccountsWithTransaction:transaction];
+    //        NSArray *allAccountsToDelete = [allAccounts filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+    //            if ([evaluatedObject isKindOfClass:[OTRAccount class]]) {
+    //                OTRAccount *account = (OTRAccount *)evaluatedObject;
+    //                if (![account.username length]) {
+    //                    return YES;
+    //                }
+    //            }
+    //            return NO;
+    //        }]];
+    //
+    //        [transaction removeObjectsForKeys:[allAccountsToDelete valueForKey:OTRYapDatabaseObjectAttributes.uniqueId] inCollection:[OTRAccount collection]];
+    //        //FIXME? [OTRManagedAccount resetAccountsConnectionStatus];
+    //    }];
+    
     
     
     
     //[OTRAppVersionManager applyAppUpdatesForCurrentAppVersion];
-
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-
+    
     self.window.rootViewController = rootViewController;
     [self.window makeKeyAndVisible];
     
     application.applicationIconBadgeNumber = 0;
-  
+    
     [Appirater setAppId:@"464200063"];
     [Appirater setOpenInAppStore:NO];
     [Appirater appLaunched:YES];
@@ -175,9 +175,12 @@
     //ConversationViewController Nav
     UINavigationController *conversationListNavController = [[UINavigationController alloc] initWithRootViewController:self.conversationViewController];
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
         viewController = conversationListNavController;
-    } else {
+    }
+    else
+    {
         //MessagesViewController Nav
         UINavigationController *messagesNavController = [[UINavigationController alloc ]initWithRootViewController:self.messagesViewController];
         
@@ -270,14 +273,15 @@
 - (void)autoLogin
 {
     //Auto Login
-    if (![BITHockeyManager sharedHockeyManager].crashManager.didCrashInLastSession) {
+    if (![BITHockeyManager sharedHockeyManager].crashManager.didCrashInLastSession)
+    {
         [[OTRProtocolManager sharedInstance] loginAccounts:[OTRAccountsManager allAutoLoginAccounts]];
     }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    [Appirater appEnteredForeground:YES];
+//    [Appirater appEnteredForeground:YES];
     [self autoLogin];
 }
 
@@ -331,18 +335,21 @@
 }
 */
 
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
     
     NSDictionary *userInfo = notification.userInfo;
     NSString *buddyUniqueId = userInfo[kOTRNotificationBuddyUniqueIdKey];
     
-    if([buddyUniqueId length]) {
+    if([buddyUniqueId length])
+    {
         __block OTRBuddy *buddy = nil;
         [[OTRDatabaseManager sharedInstance].readWriteDatabaseConnection readWithBlock:^(YapDatabaseReadTransaction *transaction) {
             buddy = [OTRBuddy fetchObjectWithUniqueID:buddyUniqueId transaction:transaction];
         }];
         
-        if (!([self.messagesViewController otr_isVisible] || [self.conversationViewController otr_isVisible])) {
+        if (!([self.messagesViewController otr_isVisible] || [self.conversationViewController otr_isVisible]))
+        {
             self.window.rootViewController = [self defaultConversationNavigationController];
         }
         
@@ -356,24 +363,30 @@
 {
     if( [[BITHockeyManager sharedHockeyManager].authenticator handleOpenURL:url
                                                           sourceApplication:sourceApplication
-                                                                 annotation:annotation]) {
+                                                                 annotation:annotation])
+    {
         return YES;
-    } else if ([url otr_isFacebookCallBackURL]) {
+    }
+    else if ([url otr_isFacebookCallBackURL])
+    {
         return [[FBSession activeSession] handleOpenURL:url];
     }
     return NO;
 }
 
 // Delegation methods
-- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken
+{
     
     OTRPushManager *pushManager = [[OTRPushManager alloc] init];
     
     [pushManager addDeviceToken:devToken name:[[UIDevice currentDevice] name] completionBlock:^(BOOL success, NSError *error) {
-        if (success) {
+        if (success)
+        {
             [[NSNotificationCenter defaultCenter] postNotificationName:OTRSuccessfulRemoteNotificationRegistration object:self userInfo:nil];
         }
-        else {
+        else
+        {
             [[NSNotificationCenter defaultCenter] postNotificationName:OTRFailedRemoteNotificationRegistration object:self userInfo:@{kOTRNotificationErrorKey:error}];
         }
     }];
@@ -389,7 +402,8 @@
     
 }
 
-- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err
+{
     [[NSNotificationCenter defaultCenter] postNotificationName:OTRFailedRemoteNotificationRegistration object:self userInfo:@{kOTRNotificationErrorKey:err}];
     NSLog(@"Error in registration. Error: %@%@", [err localizedDescription], [err userInfo]);
 }

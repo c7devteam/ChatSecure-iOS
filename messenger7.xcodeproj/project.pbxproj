@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		391F72771A388AD2006E8DF6 /* MLConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 391F72761A388AD2006E8DF6 /* MLConstants.m */; };
+		39581C731A35F2BD00A654EB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39581C721A35F2BD00A654EB /* LoginViewController.m */; };
 		3CC9B590E308D3C320E9548B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A3853627C1F67D3A296AB4 /* libPods.a */; };
 		632461521A1ADC77000EF33B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 633104D61A169EC800C17BAE /* Localizable.strings */; };
-		632461581A1AE553000EF33B /* OTRCoreDataMigrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 632461571A1AE553000EF33B /* OTRCoreDataMigrationTests.m */; };
 		633104FD1A16AD8700C17BAE /* chat.facebook.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 633104FB1A16AD8700C17BAE /* chat.facebook.com.cer */; };
 		633104FE1A16AD8700C17BAE /* talk.google.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 633104FC1A16AD8700C17BAE /* talk.google.com.cer */; };
 		633106771A16D1A300C17BAE /* NSURL+ChatSecure.m in Sources */ = {isa = PBXBuildFile; fileRef = 633105031A16D1A300C17BAE /* NSURL+ChatSecure.m */; };
@@ -153,7 +154,6 @@
 		6331072B1A16D1F200C17BAE /* DemoImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 633107291A16D1F200C17BAE /* DemoImages.xcassets */; };
 		6331072C1A16D1F200C17BAE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6331072A1A16D1F200C17BAE /* Images.xcassets */; };
 		6396AFA01A169D54009F3E6C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6396AF9F1A169D54009F3E6C /* main.m */; };
-		6396AFBA1A169D54009F3E6C /* ChatSecureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6396AFB91A169D54009F3E6C /* ChatSecureTests.m */; };
 		63C4BCCC1A1E9B9F001696CD /* ChatSecure.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63C4BCC81A1E9B9F001696CD /* ChatSecure.xcdatamodeld */; };
 		63C4BD0F1A1E9BE1001696CD /* OTRManagedAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C4BCCF1A1E9BE1001696CD /* OTRManagedAccount.m */; };
 		63C4BD101A1E9BE1001696CD /* OTRManagedBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C4BCD11A1E9BE1001696CD /* OTRManagedBuddy.m */; };
@@ -190,20 +190,13 @@
 		D9365E7A1A1EB0050006434A /* torrc in Resources */ = {isa = PBXBuildFile; fileRef = D9365E791A1EB0050006434A /* torrc */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		6396AFB41A169D54009F3E6C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6396AF921A169D54009F3E6C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6396AF991A169D54009F3E6C;
-			remoteInfo = ChatSecure;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		154CBBDFA16BDE9C28017B1F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		25A3853627C1F67D3A296AB4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		632461571A1AE553000EF33B /* OTRCoreDataMigrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTRCoreDataMigrationTests.m; sourceTree = "<group>"; };
+		391F72751A388AD2006E8DF6 /* MLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLConstants.h; path = Classes/lib/MLConstants.h; sourceTree = "<group>"; };
+		391F72761A388AD2006E8DF6 /* MLConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MLConstants.m; path = Classes/lib/MLConstants.m; sourceTree = "<group>"; };
+		39581C711A35F2BD00A654EB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		39581C721A35F2BD00A654EB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		633104D51A169EC800C17BAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		633104D81A169F0E00C17BAE /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		633104DA1A169FF900C17BAE /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -519,9 +512,6 @@
 		6396AF9A1A169D54009F3E6C /* messenger7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = messenger7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6396AF9E1A169D54009F3E6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6396AF9F1A169D54009F3E6C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6396AFB31A169D54009F3E6C /* messenger7Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = messenger7Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6396AFB81A169D54009F3E6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6396AFB91A169D54009F3E6C /* ChatSecureTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatSecureTests.m; sourceTree = "<group>"; };
 		63C4BCC91A1E9B9F001696CD /* ChatSecure 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ChatSecure 2.xcdatamodel"; sourceTree = "<group>"; };
 		63C4BCCA1A1E9B9F001696CD /* ChatSecure 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ChatSecure 3.xcdatamodel"; sourceTree = "<group>"; };
 		63C4BCCB1A1E9B9F001696CD /* ChatSecure.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChatSecure.xcdatamodel; sourceTree = "<group>"; };
@@ -602,13 +592,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CC9B590E308D3C320E9548B /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6396AFB01A169D54009F3E6C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -976,6 +959,8 @@
 				6331060F1A16D1A300C17BAE /* OTRXMPPLoginViewController.m */,
 				633106101A16D1A300C17BAE /* OTRXMPPOAUTHLoginViewController.h */,
 				633106111A16D1A300C17BAE /* OTRXMPPOAUTHLoginViewController.m */,
+				39581C711A35F2BD00A654EB /* LoginViewController.h */,
+				39581C721A35F2BD00A654EB /* LoginViewController.m */,
 			);
 			path = "Login View Controllers";
 			sourceTree = "<group>";
@@ -1041,7 +1026,6 @@
 			children = (
 				63DC0EB21A1ABC3E002C9598 /* Configurations */,
 				6396AF9C1A169D54009F3E6C /* ChatSecure */,
-				6396AFB61A169D54009F3E6C /* ChatSecureTests */,
 				6396AF9B1A169D54009F3E6C /* Products */,
 				C1E90FC219EFFEE2E8C7EECF /* Pods */,
 				DB9AACD6ED82090C7A6B0076 /* Frameworks */,
@@ -1052,7 +1036,6 @@
 			isa = PBXGroup;
 			children = (
 				6396AF9A1A169D54009F3E6C /* messenger7.app */,
-				6396AFB31A169D54009F3E6C /* messenger7Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1063,6 +1046,8 @@
 				633105001A16D1A300C17BAE /* Classes */,
 				633104D71A169EE600C17BAE /* Resources */,
 				6396AF9D1A169D54009F3E6C /* Supporting Files */,
+				391F72751A388AD2006E8DF6 /* MLConstants.h */,
+				391F72761A388AD2006E8DF6 /* MLConstants.m */,
 			);
 			path = ChatSecure;
 			sourceTree = "<group>";
@@ -1072,24 +1057,6 @@
 			children = (
 				6396AF9E1A169D54009F3E6C /* Info.plist */,
 				6396AF9F1A169D54009F3E6C /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		6396AFB61A169D54009F3E6C /* ChatSecureTests */ = {
-			isa = PBXGroup;
-			children = (
-				6396AFB91A169D54009F3E6C /* ChatSecureTests.m */,
-				632461571A1AE553000EF33B /* OTRCoreDataMigrationTests.m */,
-				6396AFB71A169D54009F3E6C /* Supporting Files */,
-			);
-			path = ChatSecureTests;
-			sourceTree = "<group>";
-		};
-		6396AFB71A169D54009F3E6C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				6396AFB81A169D54009F3E6C /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1222,24 +1189,6 @@
 			productReference = 6396AF9A1A169D54009F3E6C /* messenger7.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6396AFB21A169D54009F3E6C /* messenger7Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6396AFC01A169D54009F3E6C /* Build configuration list for PBXNativeTarget "messenger7Tests" */;
-			buildPhases = (
-				6396AFAF1A169D54009F3E6C /* Sources */,
-				6396AFB01A169D54009F3E6C /* Frameworks */,
-				6396AFB11A169D54009F3E6C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6396AFB51A169D54009F3E6C /* PBXTargetDependency */,
-			);
-			name = messenger7Tests;
-			productName = ChatSecureTests;
-			productReference = 6396AFB31A169D54009F3E6C /* messenger7Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1258,10 +1207,6 @@
 								enabled = 1;
 							};
 						};
-					};
-					6396AFB21A169D54009F3E6C = {
-						CreatedOnToolsVersion = 6.1;
-						TestTargetID = 6396AF991A169D54009F3E6C;
 					};
 				};
 			};
@@ -1309,7 +1254,6 @@
 			projectRoot = "";
 			targets = (
 				6396AF991A169D54009F3E6C /* messenger7 */,
-				6396AFB21A169D54009F3E6C /* messenger7Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -1328,13 +1272,6 @@
 				6331071B1A16D1A300C17BAE /* OTRMessagesCollectionViewCellOutgoing.xib in Resources */,
 				633107201A16D1A300C17BAE /* LaunchScreen.xib in Resources */,
 				633104FE1A16AD8700C17BAE /* talk.google.com.cer in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6396AFB11A169D54009F3E6C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1415,6 +1352,7 @@
 				633106B71A16D1A300C17BAE /* OTRActivityItemProvider.m in Sources */,
 				633106811A16D1A300C17BAE /* OTREncryptionManager.m in Sources */,
 				633106E21A16D1A300C17BAE /* OTRCertificatePinning.m in Sources */,
+				39581C731A35F2BD00A654EB /* LoginViewController.m in Sources */,
 				633107161A16D1A300C17BAE /* OTRInLineTextEditTableViewCell.m in Sources */,
 				633107121A16D1A300C17BAE /* OTRAccountTableViewCell.m in Sources */,
 				633106DD1A16D1A300C17BAE /* OTRYapPushDevice.m in Sources */,
@@ -1539,6 +1477,7 @@
 				63C4BD2E1A1E9BE1001696CD /* _OTRXMPPManagedPresenceSubscriptionRequest.m in Sources */,
 				633107231A16D1A300C17BAE /* OTRComposingImageView.m in Sources */,
 				6331068A1A16D1A300C17BAE /* OTRPushManager.m in Sources */,
+				391F72771A388AD2006E8DF6 /* MLConstants.m in Sources */,
 				633106DB1A16D1A300C17BAE /* OTRPushObject.m in Sources */,
 				633106901A16D1A300C17BAE /* OTRXMPPManager.m in Sources */,
 				633106C41A16D1A300C17BAE /* OTRListSetting.m in Sources */,
@@ -1563,24 +1502,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6396AFAF1A169D54009F3E6C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6396AFBA1A169D54009F3E6C /* ChatSecureTests.m in Sources */,
-				632461581A1AE553000EF33B /* OTRCoreDataMigrationTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		6396AFB51A169D54009F3E6C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6396AF991A169D54009F3E6C /* messenger7 */;
-			targetProxy = 6396AFB41A169D54009F3E6C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		633104D61A169EC800C17BAE /* Localizable.strings */ = {
@@ -1674,21 +1596,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = messenger7;
 				PROVISIONING_PROFILE = "";
-			};
-			name = Beta;
-		};
-		632461561A1AE1C1000EF33B /* Beta */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ChatSecureTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = messenger7Tests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatSecure.app/ChatSecure";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Beta;
 		};
@@ -1784,6 +1692,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = messenger7;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1802,41 +1711,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = messenger7;
 				PROVISIONING_PROFILE = "";
-			};
-			name = Release;
-		};
-		6396AFC11A169D54009F3E6C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 954B60A022C05FDE4DCFEF6E /* Pods.debug.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ChatSecureTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = messenger7Tests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatSecure.app/ChatSecure";
-			};
-			name = Debug;
-		};
-		6396AFC21A169D54009F3E6C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ChatSecureTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = messenger7Tests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatSecure.app/ChatSecure";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1859,16 +1734,6 @@
 				6396AFBE1A169D54009F3E6C /* Debug */,
 				6396AFBF1A169D54009F3E6C /* Release */,
 				632461551A1AE1C1000EF33B /* Beta */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6396AFC01A169D54009F3E6C /* Build configuration list for PBXNativeTarget "messenger7Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6396AFC11A169D54009F3E6C /* Debug */,
-				6396AFC21A169D54009F3E6C /* Release */,
-				632461561A1AE1C1000EF33B /* Beta */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -54,8 +54,10 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 
 @implementation OTRLoginViewController
 
-- (id) initWithAccount:(OTRAccount *)account{
-    if (self = [super init]) {
+- (id) initWithAccount:(OTRAccount *)account
+{
+    if (self = [super init])
+    {
         self.account = account;
         
         self.textFieldTextColor = [UIColor colorWithRed:0 green:0.47843137 blue:1 alpha:1];
@@ -80,7 +82,8 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 
 -(UITextField *)usernameTextField
 {
-    if (!_usernameTextField) {
+    if (!_usernameTextField)
+    {
         _usernameTextField = [[UITextField alloc] init];
         _usernameTextField.delegate = self;
         _usernameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -94,7 +97,8 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 
 -(UITextField *)passwordTextField
 {
-    if(!_passwordTextField) {
+    if(!_passwordTextField)
+    {
         _passwordTextField = [[UITextField alloc] init];
         _passwordTextField.delegate = self;
         _passwordTextField.secureTextEntry = YES;
@@ -107,7 +111,8 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 
 - (UISwitch *)rememberPasswordSwitch
 {
-    if (!_rememberPasswordSwitch) {
+    if (!_rememberPasswordSwitch)
+    {
         _rememberPasswordSwitch = [[UISwitch alloc] init];
         [_rememberPasswordSwitch addTarget:self action:@selector(switchDidChange:) forControlEvents:UIControlEventValueChanged];
     }
@@ -116,7 +121,8 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 
 - (UISwitch *)autoLoginSwitch
 {
-    if (!_autoLoginSwitch) {
+    if (!_autoLoginSwitch)
+    {
         _autoLoginSwitch = [[UISwitch alloc] init];
         [_autoLoginSwitch addTarget:self action:@selector(switchDidChange:) forControlEvents:UIControlEventValueChanged];
     }
@@ -125,7 +131,8 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 
 - (UITableView *)loginViewTableView
 {
-    if (!_loginViewTableView) {
+    if (!_loginViewTableView)
+    {
         _loginViewTableView= [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
         _loginViewTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         [_loginViewTableView setDelegate:self];
@@ -145,13 +152,18 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 
 - (void)switchDidChange:(id)sender
 {
-    if ([sender isEqual:self.autoLoginSwitch]) {
-        if (self.autoLoginSwitch.on) {
+
+    if ([sender isEqual:self.autoLoginSwitch])
+    {
+        if (self.autoLoginSwitch.on)
+        {
             [self.rememberPasswordSwitch setOn:YES animated:YES];
         }
     }
-    else if ([sender isEqual:self.rememberPasswordSwitch]) {
-        if (!self.rememberPasswordSwitch.on) {
+    else if ([sender isEqual:self.rememberPasswordSwitch])
+    {
+        if (!self.rememberPasswordSwitch.on)
+        {
             [self.autoLoginSwitch setOn:NO animated:YES];
         }
     }
@@ -160,11 +172,13 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 
 - (void)addCellinfoWithSection:(NSInteger)section row:(NSInteger)row labelText:(id)text cellType:(NSString *)type userInputView:(UIView *)inputView;
 {
-    if (!self.tableViewArray) {
+    if (!self.tableViewArray)
+    {
         self.tableViewArray = [[NSMutableArray alloc] init];
     }
     
-    if ([self.tableViewArray count]<(section+1)) {
+    if ([self.tableViewArray count]<(section+1))
+    {
         [self.tableViewArray setObject:[[NSMutableArray alloc] init] atIndexedSubscript:section];
     }
     
@@ -186,7 +200,8 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
     self.loginButton = [[UIBarButtonItem alloc] initWithTitle:LOGIN_STRING style:UIBarButtonItemStyleDone target:self action:@selector(loginButtonPressed:)];
     self.navigationItem.rightBarButtonItem = self.loginButton;
     
-    if (!self.isNewAccount) {
+    if (!self.isNewAccount)
+    {
         self.cancelButton = [[UIBarButtonItem alloc] initWithTitle:CANCEL_STRING style:UIBarButtonItemStyleBordered target:self action:@selector(cancelPressed:)];
         self.navigationItem.leftBarButtonItem = self.cancelButton;
     }
@@ -198,7 +213,7 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.tableViewArray.count;
+    return [self.tableViewArray count];
     
 }
 
@@ -209,12 +224,18 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if(self.tableViewArray.count > 1)
+    if([self.tableViewArray count] > 1)
     {
         if(section == 0)
+        {
             return BASIC_STRING;
+        }
+        
         else if (section == 1)
+        {
             return ADVANCED_STRING;
+        }
+        
     }
     return @"";
 }
@@ -223,7 +244,7 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 {
     if([[[[self.tableViewArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectForKey:kCellTypeKey] isEqualToString:KCellTypeHelp])
     {
-        CGFloat height = ((UILabel *)[[[self.tableViewArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectForKey:kTextLabelTextKey]).frame.size.height+10;
+        CGFloat height = ((UILabel *)[[[self.tableViewArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectForKey:kTextLabelTextKey]).frame.size.height + 10;
         return height;
     }
     return 44.0f;
@@ -245,7 +266,7 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellType];
         }
         cell.textLabel.text = [cellDictionary objectForKey:kTextLabelTextKey];
-        cell.accessoryView=[cellDictionary objectForKey:kUserInputViewKey];
+        cell.accessoryView = [cellDictionary objectForKey:kUserInputViewKey];
         
     }
     else if( [cellType isEqualToString:KCellTypeHelp])
@@ -301,12 +322,16 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
     
     self.autoLoginSwitch.on = self.account.autologin;
     self.rememberPasswordSwitch.on = self.account.rememberPassword;
-    if (self.account.rememberPassword) {
+    if (self.account.rememberPassword)
+    {
         self.passwordTextField.text = self.account.password;
-    } else {
+    }
+    else
+    {
         self.passwordTextField.text = @"";
     }
 }
+
 - (void) viewWillDisappear:(BOOL)animated
 {    
     [super viewWillDisappear:animated];
@@ -324,9 +349,12 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
     
     self.account.autologin = self.autoLoginSwitch.on;
     
-    if (self.account.rememberPassword) {
+    if (self.account.rememberPassword)
+    {
         self.account.password = self.passwordTextField.text;
-    } else {
+    }
+    else
+    {
         self.account.password = nil;
     }
 }
@@ -340,15 +368,20 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
         return YES;
-    } else {
+    }
+    else
+    {
         return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
     }
 }
 
-- (void)hideHUD {
-    if (self.HUD) {
+- (void)hideHUD
+{
+    if (self.HUD)
+    {
         [self.HUD hide:YES];
     }
 }
@@ -360,14 +393,17 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
         [self.HUD hide:YES];
     }
     
-    if (self.account.protocolType == OTRProtocolTypeXMPP) {
+    if (self.account.protocolType == OTRProtocolTypeXMPP)
+    {
         NSDictionary * userInfo = notification.userInfo;
         id error = userInfo[kOTRNotificationErrorKey];
         
-        if ([error isKindOfClass:[NSError class]]) {
+        if ([error isKindOfClass:[NSError class]])
+        {
             [self showAlertViewWithTitle:ERROR_STRING message:XMPP_FAIL_STRING error:error];
         }
-        else {
+        else
+        {
             [self showAlertViewWithTitle:ERROR_STRING message:XMPP_FAIL_STRING error:nil];
         }
     }
@@ -387,7 +423,8 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 
 
 
-- (void)loginButtonPressed:(id)sender {
+- (void)loginButtonPressed:(id)sender
+{
     BOOL fields = [self checkFields];
     if(fields)
     {
@@ -408,7 +445,8 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 - (void)showHUDWithText:(NSString *)text
 {
     [self.view endEditing:YES];
-    if (!self.HUD) {
+    if (!self.HUD)
+    {
         self.HUD = [[MBProgressHUD alloc] initWithView:self.view];
         [self.view addSubview:self.HUD];
     }
@@ -417,11 +455,13 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
     [self.HUD show:YES];
 }
 
-- (void)cancelPressed:(id)sender {
+- (void)cancelPressed:(id)sender
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
     return YES;
 }
 
@@ -430,10 +470,11 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
     __block BOOL isDuplicate = NO;
     [[OTRDatabaseManager sharedInstance].readWriteDatabaseConnection readWithBlock:^(YapDatabaseReadTransaction *transaction) {
         NSArray *accounts = [OTRAccount allAccountsWithUsername:username transaction:transaction];
-        if(accounts.count) {
+        if([accounts count])
+        {
             //already more than one account with this username
             OTRAccount *savedAccount = [accounts firstObject];
-            if(accounts.count > 1 || ![savedAccount.uniqueId isEqualToString:self.account.uniqueId])
+            if([accounts count] > 1 || ![savedAccount.uniqueId isEqualToString:self.account.uniqueId])
             {
                 isDuplicate = YES;
             }
@@ -447,7 +488,8 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 {
     __block BOOL fields = self.usernameTextField.text.length && self.passwordTextField.text.length;
     
-    if (fields) {
+    if (fields)
+    {
         //check that the username is unique
         if([self isDuplicateUsername:self.usernameTextField.text])
         {
@@ -482,14 +524,17 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
     dispatch_async(dispatch_get_main_queue(), ^{
         RIButtonItem * okButtonItem = [RIButtonItem itemWithLabel:OK_STRING];
         UIAlertView * alertView = nil;
-        if (error) {
+        if (error)
+        {
             RIButtonItem * infoButton = [RIButtonItem itemWithLabel:INFO_STRING action:^{
                 NSString * errorDescriptionString = [NSString stringWithFormat:@"%@ : %@",[error domain],[error localizedDescription]];
                 
-                if ([[error domain] isEqualToString:@"kCFStreamErrorDomainSSL"]) {
+                if ([[error domain] isEqualToString:@"kCFStreamErrorDomainSSL"])
+                {
                     NSString * sslString = [OTRXMPPError errorStringWithSSLStatus:(OSStatus)error.code];
-                    if ([sslString length]) {
-                        errorDescriptionString = [errorDescriptionString stringByAppendingFormat:@"\n%@",sslString];
+                    if ([sslString length])
+                    {
+                        errorDescriptionString = [errorDescriptionString stringByAppendingFormat:@"\n%@", sslString];
                     }
                 }
                 
@@ -513,7 +558,8 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
                                           cancelButtonItem:nil
                                           otherButtonItems:okButtonItem,infoButton, nil];
         }
-        else {
+        else
+        {
             alertView = [[UIAlertView alloc] initWithTitle:title
                                                    message:message
                                           cancelButtonItem:nil
@@ -522,7 +568,8 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
         
         
         
-        if (alertView) {
+        if (alertView)
+        {
             [alertView show];
         }
     });
@@ -531,7 +578,8 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 #pragma mark -
 #pragma mark MBProgressHUDDelegate methods
 
-- (void)hudWasHidden:(MBProgressHUD *)hud {
+- (void)hudWasHidden:(MBProgressHUD *)hud
+{
     // Remove HUD from screen when the HUD was hidded
     [self.HUD removeFromSuperview];
 }
@@ -539,17 +587,25 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 +(OTRLoginViewController *)loginViewControllerWithAcccount:(OTRAccount *)account
 {
     
-    switch (account.accountType) {
-        case OTRAccountTypeXMPPTor:
+    switch (account.accountType)
+    {
+//        case OTRAccountTypeXMPPTor:
         case OTRAccountTypeJabber:
             return [[OTRJabberLoginViewController alloc] initWithAccount:account];
-        case OTRAccountTypeFacebook:
-            return [[OTRFacebookLoginViewController alloc] initWithAccount:account];
-        case OTRAccountTypeGoogleTalk:
-            return [[OTRGoogleTalkLoginViewController alloc] initWithAccount:account];
+//        case OTRAccountTypeFacebook:
+//            return [[OTRFacebookLoginViewController alloc] initWithAccount:account];
+//        case OTRAccountTypeGoogleTalk:
+//            return [[OTRGoogleTalkLoginViewController alloc] initWithAccount:account];
         default:
             return nil;
     }
+}
+
+
+#pragma mark - Helper
+- (NSString *)fetchAccountData
+{
+    return nil;
 }
 
 @end

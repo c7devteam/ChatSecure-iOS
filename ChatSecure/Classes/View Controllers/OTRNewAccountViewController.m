@@ -66,10 +66,12 @@ NSString *const kOTRAccountTypeKey   = @"kOTRAccountTypeKey";
 
 - (NSArray*)accounts
 {
-    return @[[OTRNewAccountViewController facebookCellDictionary],
-             [OTRNewAccountViewController googleCellDictionary],
-             [OTRNewAccountViewController XMPPCellDictionary],
-             [OTRNewAccountViewController XMPPTorCellDictionary]];
+    return @[
+//             [OTRNewAccountViewController facebookCellDictionary],
+//             [OTRNewAccountViewController googleCellDictionary],
+             [OTRNewAccountViewController XMPPCellDictionary]
+//             [OTRNewAccountViewController XMPPTorCellDictionary]
+             ];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -108,7 +110,8 @@ NSString *const kOTRAccountTypeKey   = @"kOTRAccountTypeKey";
         cell.imageView.layer.masksToBounds = YES;
         cell.imageView.layer.cornerRadius = 10.0;
     }
-    else {
+    else
+    {
         cell.imageView.layer.cornerRadius = 0.0;
     }
     
@@ -124,13 +127,16 @@ NSString *const kOTRAccountTypeKey   = @"kOTRAccountTypeKey";
     [self didSelectAccountType:accountType];
 }
 
-- (void)cancelPressed:(id)sender {
+- (void)cancelPressed:(id)sender
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)didSelectAccountType:(OTRAccountType)accountType {
+- (void)didSelectAccountType:(OTRAccountType)accountType
+{
     
-    if (accountType == OTRAccountTypeXMPPTor) {
+    if (accountType == OTRAccountTypeXMPPTor)
+    {
         
         RIButtonItem *okButton = [RIButtonItem itemWithLabel:OK_STRING action:^{
             [self pushLoginViewControllerWithType:accountType];
@@ -140,7 +146,8 @@ NSString *const kOTRAccountTypeKey   = @"kOTRAccountTypeKey";
         [alertView show];
         
     }
-    else {
+    else
+    {
         [self pushLoginViewControllerWithType:accountType];
     }
     
@@ -166,30 +173,37 @@ NSString *const kOTRAccountTypeKey   = @"kOTRAccountTypeKey";
     }
 }
 
-+(NSDictionary *)googleCellDictionary {
-    return @{kOTRDisplayNameKey:GOOGLE_TALK_STRING,
-             kOTRProviderImageKey: [UIImage imageNamed:OTRGoogleTalkImageName],
-             kOTRAccountTypeKey: @(OTRAccountTypeGoogleTalk)};
-}
-+(NSDictionary *)facebookCellDictionary {
-    return @{kOTRDisplayNameKey:FACEBOOK_STRING,
-             kOTRProviderImageKey: [OTRImages facebookImage],
-             kOTRAccountTypeKey: @(OTRAccountTypeFacebook)};
-}
-+(NSDictionary *)XMPPCellDictionary {
-    return @{kOTRDisplayNameKey: JABBER_STRING,
+//+(NSDictionary *)googleCellDictionary {
+//    return @{kOTRDisplayNameKey:GOOGLE_TALK_STRING,
+//             kOTRProviderImageKey: [UIImage imageNamed:OTRGoogleTalkImageName],
+//             kOTRAccountTypeKey: @(OTRAccountTypeGoogleTalk)};
+//}
+
+//+(NSDictionary *)facebookCellDictionary {
+//    return @{kOTRDisplayNameKey:FACEBOOK_STRING,
+//             kOTRProviderImageKey: [OTRImages facebookImage],
+//             kOTRAccountTypeKey: @(OTRAccountTypeFacebook)};
+//}
+
++(NSDictionary *)XMPPCellDictionary
+{
+    return @{
+             kOTRDisplayNameKey: JABBER_STRING,
              kOTRProviderImageKey: [UIImage imageNamed:OTRXMPPImageName],
-             kOTRAccountTypeKey: @(OTRAccountTypeJabber)};
+             kOTRAccountTypeKey: @(OTRAccountTypeJabber)
+             };
 }
-+(NSDictionary *)XMPPTorCellDictionary {
-    return @{kOTRDisplayNameKey: XMPP_TOR_STRING,
-             kOTRProviderImageKey: [UIImage imageNamed:OTRXMPPTorImageName],
-             kOTRAccountTypeKey: @(OTRAccountTypeXMPPTor)};
-}
-+(NSDictionary *)aimCellDictionary {
-    return @{kOTRDisplayNameKey: AIM_STRING,
-             kOTRProviderImageKey: [UIImage imageNamed:OTRAimImageName],
-             kOTRAccountTypeKey: @(OTRAccountTypeAIM)};
-}
+
+//+(NSDictionary *)XMPPTorCellDictionary {
+//    return @{kOTRDisplayNameKey: XMPP_TOR_STRING,
+//             kOTRProviderImageKey: [UIImage imageNamed:OTRXMPPTorImageName],
+//             kOTRAccountTypeKey: @(OTRAccountTypeXMPPTor)};
+//}
+
+//+(NSDictionary *)aimCellDictionary {
+//    return @{kOTRDisplayNameKey: AIM_STRING,
+//             kOTRProviderImageKey: [UIImage imageNamed:OTRAimImageName],
+//             kOTRAccountTypeKey: @(OTRAccountTypeAIM)};
+//}
 
 @end

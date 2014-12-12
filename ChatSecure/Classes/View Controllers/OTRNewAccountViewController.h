@@ -29,10 +29,10 @@
 - (NSArray *)accounts;
 - (void)didSelectAccountType:(OTRAccountType)accountType;
 
-+(NSDictionary *)googleCellDictionary;
-+(NSDictionary *)facebookCellDictionary;
-+(NSDictionary *)XMPPCellDictionary;
-+(NSDictionary *)XMPPTorCellDictionary;
-+(NSDictionary *)aimCellDictionary;
+//+(NSDictionary *)googleCellDictionary;
+//+(NSDictionary *)facebookCellDictionary;
++ (NSDictionary *)XMPPCellDictionary;
+//+(NSDictionary *)XMPPTorCellDictionary;
+//+(NSDictionary *)aimCellDictionary;
 
 @end

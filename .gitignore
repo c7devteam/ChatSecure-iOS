@@ -9,5 +9,8 @@ DerivedData
 OTRSecrets.m
 *.orig
 *.xccheckout
-
 /Pods/
+ChatSecure/Classes/View Controllers/Login View Controllers/LoginViewController.m
+ChatSecure/Classes/lib/MLConstants.h
+ChatSecure/Classes/lib/MLConstants.m
+.gitignore

@@ -16,8 +16,10 @@
 
 - (NSArray*)accounts
 {
-    return @[[OTRNewAccountViewController XMPPCellDictionary],
-             [OTRNewAccountViewController XMPPTorCellDictionary]];
+    return @[
+             [OTRNewAccountViewController XMPPCellDictionary]
+//             [OTRNewAccountViewController XMPPTorCellDictionary]
+             ];
 }
 
 - (void)didSelectAccountType:(OTRAccountType)accountType
