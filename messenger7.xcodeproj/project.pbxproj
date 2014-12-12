@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		391F72771A388AD2006E8DF6 /* MLConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 391F72761A388AD2006E8DF6 /* MLConstants.m */; };
-		39581C731A35F2BD00A654EB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39581C721A35F2BD00A654EB /* LoginViewController.m */; };
 		3CC9B590E308D3C320E9548B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A3853627C1F67D3A296AB4 /* libPods.a */; };
 		632461521A1ADC77000EF33B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 633104D61A169EC800C17BAE /* Localizable.strings */; };
 		633104FD1A16AD8700C17BAE /* chat.facebook.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 633104FB1A16AD8700C17BAE /* chat.facebook.com.cer */; };
@@ -195,8 +194,6 @@
 		25A3853627C1F67D3A296AB4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		391F72751A388AD2006E8DF6 /* MLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLConstants.h; path = Classes/lib/MLConstants.h; sourceTree = "<group>"; };
 		391F72761A388AD2006E8DF6 /* MLConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MLConstants.m; path = Classes/lib/MLConstants.m; sourceTree = "<group>"; };
-		39581C711A35F2BD00A654EB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		39581C721A35F2BD00A654EB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		633104D51A169EC800C17BAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		633104D81A169F0E00C17BAE /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		633104DA1A169FF900C17BAE /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -959,8 +956,6 @@
 				6331060F1A16D1A300C17BAE /* OTRXMPPLoginViewController.m */,
 				633106101A16D1A300C17BAE /* OTRXMPPOAUTHLoginViewController.h */,
 				633106111A16D1A300C17BAE /* OTRXMPPOAUTHLoginViewController.m */,
-				39581C711A35F2BD00A654EB /* LoginViewController.h */,
-				39581C721A35F2BD00A654EB /* LoginViewController.m */,
 			);
 			path = "Login View Controllers";
 			sourceTree = "<group>";
@@ -1352,7 +1347,6 @@
 				633106B71A16D1A300C17BAE /* OTRActivityItemProvider.m in Sources */,
 				633106811A16D1A300C17BAE /* OTREncryptionManager.m in Sources */,
 				633106E21A16D1A300C17BAE /* OTRCertificatePinning.m in Sources */,
-				39581C731A35F2BD00A654EB /* LoginViewController.m in Sources */,
 				633107161A16D1A300C17BAE /* OTRInLineTextEditTableViewCell.m in Sources */,
 				633107121A16D1A300C17BAE /* OTRAccountTableViewCell.m in Sources */,
 				633106DD1A16D1A300C17BAE /* OTRYapPushDevice.m in Sources */,
@@ -1594,6 +1588,24 @@
 				INFOPLIST_FILE = ChatSecure/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/OTRKit/OTRKitDependencies/lib\"",
+					"\"$(PODS_ROOT)/../Submodules/OTRKit/OTRKitDependencies/lib\"",
+					"\"$(PODS_ROOT)/../Submodules/OTRKit/OTRKitDependencies/lib\"",
+					"\"$(PODS_ROOT)/../Submodules/XMPPFramework/Vendor/libidn\"",
+				);
 				PRODUCT_NAME = messenger7;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1690,6 +1702,24 @@
 				INFOPLIST_FILE = ChatSecure/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/OTRKit/OTRKitDependencies/lib\"",
+					"\"$(PODS_ROOT)/../Submodules/OTRKit/OTRKitDependencies/lib\"",
+					"\"$(PODS_ROOT)/../Submodules/OTRKit/OTRKitDependencies/lib\"",
+					"\"$(PODS_ROOT)/../Submodules/XMPPFramework/Vendor/libidn\"",
+				);
 				PRODUCT_NAME = messenger7;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1709,6 +1739,24 @@
 				INFOPLIST_FILE = ChatSecure/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/CPAProxy/CPAProxyDependencies\"",
+					"\"$(PODS_ROOT)/../Submodules/OTRKit/OTRKitDependencies/lib\"",
+					"\"$(PODS_ROOT)/../Submodules/OTRKit/OTRKitDependencies/lib\"",
+					"\"$(PODS_ROOT)/../Submodules/OTRKit/OTRKitDependencies/lib\"",
+					"\"$(PODS_ROOT)/../Submodules/XMPPFramework/Vendor/libidn\"",
+				);
 				PRODUCT_NAME = messenger7;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

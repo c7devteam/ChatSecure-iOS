@@ -37,6 +37,8 @@
 #import "OTRDatabaseManager.h"
 
 #import "OTRXMPPTorAccount.h"
+#import "MLConstants.h"
+#import "AFNetworking.h"
 
 NSString *const kTextLabelTextKey       = @"kTextLabelTextKey";
 NSString *const kCellTypeKey            = @"kCellTypeKey";
@@ -344,7 +346,10 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 
 -(void)readInFields
 {
-    self.account.username = [self.usernameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+//    self.account.username = [self.usernameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+//    self.account.username = [self fetchAccountData];
+    
+    [self fetchAccountData];
     self.account.rememberPassword = self.rememberPasswordSwitch.on;
     
     self.account.autologin = self.autoLoginSwitch.on;
@@ -429,16 +434,16 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
     if(fields)
     {
         [self showHUDWithText:LOGGING_IN_STRING];
-        
+//
         [self readInFields];
-        
-        [[OTRDatabaseManager sharedInstance].readWriteDatabaseConnection asyncReadWriteWithBlock:^(YapDatabaseReadWriteTransaction *transaction) {
-            
-            [self.account saveWithTransaction:transaction];
-        }];
-        
-        id<OTRProtocol> protocol = [[OTRProtocolManager sharedInstance] protocolForAccount:self.account];
-        [protocol connectWithPassword:self.passwordTextField.text];
+//
+//        [[OTRDatabaseManager sharedInstance].readWriteDatabaseConnection asyncReadWriteWithBlock:^(YapDatabaseReadWriteTransaction *transaction) {
+//            
+//            [self.account saveWithTransaction:transaction];
+//        }];
+//        
+//        id<OTRProtocol> protocol = [[OTRProtocolManager sharedInstance] protocolForAccount:self.account];
+//        [protocol connectWithPassword:self.passwordTextField.text];
     }
 }
 
@@ -603,9 +608,130 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 
 
 #pragma mark - Helper
-- (NSString *)fetchAccountData
+- (void)fetchAccountData
 {
-    return nil;
+    
+    NSString *username = [self.usernameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    NSDictionary *params = @{
+                             @"username": username,
+                             @"client_secret": kClientSecret,
+                             @"client_id": kClientID,
+                             @"grant_type": @"password",
+                             @"redirect_uri": kRedirectUrl,
+                             @"password": self.passwordTextField.text
+                             };
+    
+    
+    [manager POST:kTokenUrl parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+        if (responseObject)
+        {
+            [self handleReponse:responseObject];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (error)
+        {
+            //            NSLog(@"error: %@", error);
+            [self showErrorAlertView:@"Wrong Credentials"];
+            
+            
+        }
+        
+    }];
+    
+}
+
+- (void)handleReponse:(id)response
+{
+    NSError *error = nil;
+    
+    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:&error];
+    
+    if (error)
+    {
+        NSLog(@"error: %@", error);
+    }
+    else
+    {
+        if (responseDictionary[@"access_token"])
+        {
+            [self getJID:responseDictionary[@"access_token"]];
+        }
+    }
+}
+
+- (void)getJID:(NSString *)accessToken
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", accessToken] forHTTPHeaderField:@"Authorization"];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:accessToken forKey:@"accessToken"];
+    [userDefaults synchronize];
+    
+    [manager GET:kCurrentAccountUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (responseObject)
+        {
+            [self handleAccountResponse:responseObject];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        NSLog(@"failed to get access token!");
+    }];
+    
+}
+
+- (void)handleAccountResponse:(id)response
+{
+    NSError *error = nil;
+    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:&error];
+    
+    if (error)
+    {
+        NSLog(@"error: %@", error);
+    }
+    else
+    {
+        if (responseDictionary[@"jid"])
+        {
+            self.account.username = responseDictionary[@"jid"];
+            NSLog(@"%@", responseDictionary[@"jid"]);
+            
+            [[OTRDatabaseManager sharedInstance].readWriteDatabaseConnection asyncReadWriteWithBlock:^(YapDatabaseReadWriteTransaction *transaction) {
+                
+                [self.account saveWithTransaction:transaction];
+            }];
+            
+            id<OTRProtocol> protocol = [[OTRProtocolManager sharedInstance] protocolForAccount:self.account];
+            [protocol connectWithPassword:self.passwordTextField.text];
+
+            
+        }
+    }
+}
+
+- (void)showErrorAlertView:(NSString *)message
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Info" message:message delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [alertView show];
+    });
+}
+
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.view endEditing:YES];
 }
 
 @end
