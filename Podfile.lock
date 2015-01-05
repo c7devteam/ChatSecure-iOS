@@ -42,7 +42,7 @@ PODS:
     - CocoaLumberjack/Core
   - CPAProxy (1.0.0):
     - CocoaAsyncSocket
-  - Facebook-iOS-SDK (3.20.0):
+  - Facebook-iOS-SDK (3.21.1):
     - Bolts (~> 1.0)
   - gtm-http-fetcher (1.0.141)
   - gtm-oauth2 (1.0.126):
@@ -57,9 +57,9 @@ PODS:
   - MagicalRecord (2.2):
     - MagicalRecord/Core (= 2.2)
   - MagicalRecord/Core (2.2)
-  - Mantle (1.5.1):
-    - Mantle/extobjc (= 1.5.1)
-  - Mantle/extobjc (1.5.1)
+  - Mantle (1.5.3):
+    - Mantle/extobjc (= 1.5.3)
+  - Mantle/extobjc (1.5.3)
   - MBProgressHUD (0.9)
   - MWFeedParser (1.0.1):
     - MWFeedParser/FeedParser (= 1.0.1)
@@ -78,14 +78,14 @@ PODS:
   - ProxyKit/common (1.0.2):
     - CocoaAsyncSocket (~> 7.3)
     - CocoaLumberjack (~> 1.9)
-  - PureLayout (2.0.3)
+  - PureLayout (2.0.4)
   - RMStepsController (1.0.1)
   - SIAlertView (1.3)
   - SQLCipher/common (3.1.0)
   - SQLCipher/fts (3.1.0):
     - SQLCipher/common
   - SSKeychain (1.2.2)
-  - TTTAttributedLabel (1.11.0)
+  - TTTAttributedLabel (1.13.0)
   - TUSafariActivity (1.0.2)
   - UIAlertView-Blocks (1.0)
   - uservoice-iphone-sdk (3.2.1)
@@ -253,7 +253,7 @@ DEPENDENCIES:
   - gtm-oauth2 (from `Podspecs/gtm-oauth2.podspec.json`)
   - HockeySDK (~> 3.6)
   - JNKeyChain
-  - JSQMessagesViewController (~> 5.3)
+  - JSQMessagesViewController
   - JSQSystemSoundPlayer (~> 1.5)
   - JTTargetActionBlock (~> 1.0)
   - JVFloatLabeledTextField (~> 0.0)
@@ -324,7 +324,7 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 4bbe8fc969e61e62f408de98faac676468e155b3
   CocoaLumberjack: 205769c032b5fef85b92472046bcc8b7e7c8a817
   CPAProxy: c3df549999514de2c04633d20a79b00daf627ddb
-  Facebook-iOS-SDK: 5854404b4b651f612a8ef79ca06d766858f4cb8e
+  Facebook-iOS-SDK: 18c26e86ab25c17854a2ee2a8f60562099c6600f
   gtm-http-fetcher: 5072f07e523261f7a87df939d13c1be2340d8111
   gtm-oauth2: dfb3016b8347b73fa80042e5aed29ec4f36e46bc
   HockeySDK: bfd1f5ac75938b07499c4ac12932244b72a2e70b
@@ -334,19 +334,19 @@ SPEC CHECKSUMS:
   JTTargetActionBlock: bef69054d368a91b33b98a520fa9e78e218a5a25
   JVFloatLabeledTextField: b6c7d824d231b3c01d14692feada878808480af8
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
-  Mantle: d7c5ac734579ec751c58fecbf56189853056c58c
+  Mantle: 8d84cacd6c2a69ff6fbce985a2b51298a5495de3
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   MWFeedParser: 003cbf5398e99a7f2057fbe9583054fd1b84be72
   Navajo: 9130d497903e5d1b0f1b3c987be01f5b60fd37c7
   OpenInChrome: b7c73ddf8fe0a1788dc0549c3c4c70e3c84da578
   OTRKit: 908a5ea8d40a2264ff491027a9f3d9d0d2c4afba
   ProxyKit: 3e73f2ad92327554549474ad10da21dde46d3ba8
-  PureLayout: 9658675ed95dabfcdf5154c0771ec9ed0980b370
+  PureLayout: ddf4fedf7e2f5984f972bbd2205dda4fc3418347
   RMStepsController: 8ff91f169d884fdd834ad37007f553c7bed333eb
   SIAlertView: e6d0d786c3a3f6e456b0e8b9376d0c34d68e827b
   SQLCipher: 981110217eb93c2779c34fb59e646a1c1da918d8
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
-  TTTAttributedLabel: e63baa4d3b8798ea259f5d9f55720002b4bbbd66
+  TTTAttributedLabel: a847b59a75c92d59f4eabc9cc1745704cff2dc36
   TUSafariActivity: 63c6b0584d1f0a731e955c0e4d9c89cde63bedc2
   UIAlertView-Blocks: f3271e84372beb97aea115cd1fb26ae66457f12f
   uservoice-iphone-sdk: 7cbc1e76dcbbc3d5ae3b4bf009fdcf355e1e83ec

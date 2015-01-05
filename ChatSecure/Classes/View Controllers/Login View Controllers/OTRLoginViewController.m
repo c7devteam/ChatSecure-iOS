@@ -26,8 +26,6 @@
 
 #import "OTRXMPPLoginViewController.h"
 #import "OTRJabberLoginViewController.h"
-#import "OTRFacebookLoginViewController.h"
-#import "OTRGoogleTalkLoginViewController.h"
 #import "OTRInLineTextEditTableViewCell.h"
 #import "OTRUtilities.h"
 #import "OTRXMPPError.h"
@@ -318,7 +316,8 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
     {
         [self.usernameTextField becomeFirstResponder];
     }
-    else {
+    else
+    {
         [self.passwordTextField becomeFirstResponder];
     }
     

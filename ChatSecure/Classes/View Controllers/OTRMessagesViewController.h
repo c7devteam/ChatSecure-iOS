@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 #import "JSQMessagesViewController.h"
+#import "JSQMessages.h"
+
 
 @class OTRBuddy;
 

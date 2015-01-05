@@ -26,7 +26,7 @@
 #import "Strings.h"
 #import "OTRSettingTableViewCell.h"
 #import "OTRSettingDetailViewController.h"
-#import "OTRAboutViewController.h"
+//#import "OTRAboutViewController.h"
 #import "OTRQRCodeViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "OTRNewAccountViewController.h"
@@ -344,18 +344,18 @@ static NSString *const circleImageName = @"31-circle-plus-large.png";
 
 -(void)showAboutScreen
 {
-    OTRAboutViewController *aboutController = [[OTRAboutViewController alloc] init];
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    {
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:aboutController];
-        navController.modalPresentationStyle = UIModalPresentationFormSheet;
-        [self.navigationController presentViewController:navController animated:YES completion:nil];
-    }
-    else
-    {
-       [self.navigationController pushViewController:aboutController animated:YES];
-    }
+//    OTRAboutViewController *aboutController = [[OTRAboutViewController alloc] init];
+//    
+//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+//    {
+//        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:aboutController];
+//        navController.modalPresentationStyle = UIModalPresentationFormSheet;
+//        [self.navigationController presentViewController:navController animated:YES completion:nil];
+//    }
+//    else
+//    {
+//       [self.navigationController pushViewController:aboutController animated:YES];
+//    }
     
 }
 
