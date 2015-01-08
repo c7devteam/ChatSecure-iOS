@@ -312,7 +312,7 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
         [welf protocolLoginSuccess:note];
     }];
     
-    if(!self.usernameTextField.text.length)
+    if (!self.usernameTextField.text.length)
     {
         [self.usernameTextField becomeFirstResponder];
     }
@@ -345,13 +345,46 @@ NSString *const KCellTypeHelp           = @"KCellTypeHelp";
 
 -(void)readInFields
 {
-//    self.account.username = [self.usernameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-//    self.account.username = [self fetchAccountData];
     
-    [self fetchAccountData];
-    self.account.rememberPassword = self.rememberPasswordSwitch.on;
+//    if (!self.account.username)
+//    {
+//        [self fetchAccountData];
+//    }
+
+//    if (self.account.username != nil)
+//    {
+//        BOOL isFetchedAccount = ([self.account.username rangeOfString:kXMPPServer].location == NSNotFound) ? NO : YES;
+//        if (isFetchedAccount)
+//        {
+//            self.account.username = [self.usernameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+//            
+//            [[OTRDatabaseManager sharedInstance].readWriteDatabaseConnection asyncReadWriteWithBlock:^(YapDatabaseReadWriteTransaction *transaction) {
+//                
+//                [self.account saveWithTransaction:transaction];
+//            }];
+//            
+//            id<OTRProtocol> protocol = [[OTRProtocolManager sharedInstance] protocolForAccount:self.account];
+//            [protocol connectWithPassword:self.passwordTextField.text];
+//            
+//        }
+//        else
+//        {
+//            [self fetchAccountData];
+//        }
+//    }
+//    else
+//    {
+        [self fetchAccountData];
+//    }
+
     
-    self.account.autologin = self.autoLoginSwitch.on;
+//    self.account.rememberPassword = self.rememberPasswordSwitch.on;
+//    
+//    self.account.autologin = self.autoLoginSwitch.on;
+    
+    
+    self.account.rememberPassword = YES;
+    
     
     if (self.account.rememberPassword)
     {

@@ -292,9 +292,9 @@
 //        }
 //    }
 //    else
-    {
+//    {
         [super loginButtonPressed:sender];
-    }
+//    }
 }
 
 - (void)dealloc

@@ -997,7 +997,7 @@ heightForCellBottomLabelAtIndexPath:(NSIndexPath *)indexPath
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:@"Send photo", @"Send location", @"Send video", nil];
+                                              otherButtonTitles:@"Send photo", @"Send video",  @"Send location", nil];
     
     [sheet showFromToolbar:self.inputToolbar];
 
@@ -1010,6 +1010,30 @@ heightForCellBottomLabelAtIndexPath:(NSIndexPath *)indexPath
     {
         return;
     }
+    
+    switch (buttonIndex)
+    {
+        case 0:
+            NSLog(@"0");
+            // photo
+            break;
+            
+        case 1:
+            NSLog(@"1");
+            // video
+            break;
+            
+        case 2:
+            NSLog(@"2");
+            // location
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+    
 }
 
 @end

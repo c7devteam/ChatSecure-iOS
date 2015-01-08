@@ -4,6 +4,7 @@ inhibit_all_warnings!
 
 source 'https://github.com/CocoaPods/Specs.git'
 
+pod 'CTAssetsPickerController',  '~> 2.8.0'
 pod "JNKeyChain"
 pod 'AFNetworking', '~> 2.4'
 pod "Appirater", '~> 2.0'

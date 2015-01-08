@@ -42,6 +42,7 @@ PODS:
     - CocoaLumberjack/Core
   - CPAProxy (1.0.0):
     - CocoaAsyncSocket
+  - CTAssetsPickerController (2.8.0)
   - Facebook-iOS-SDK (3.21.1):
     - Bolts (~> 1.0)
   - gtm-http-fetcher (1.0.141)
@@ -248,6 +249,7 @@ DEPENDENCIES:
   - CocoaAsyncSocket (from `https://github.com/robbiehanson/CocoaAsyncSocket.git`, commit `c0bbcbcc5e039ca5d732f9844bf95c3d8ee31a5b`)
   - CocoaLumberjack (~> 1.9)
   - CPAProxy (from `Submodules/CPAProxy/CPAProxy.podspec`)
+  - CTAssetsPickerController (~> 2.8.0)
   - Facebook-iOS-SDK (~> 3.19)
   - gtm-http-fetcher (from `Podspecs/gtm-http-fetcher.podspec.json`)
   - gtm-oauth2 (from `Podspecs/gtm-oauth2.podspec.json`)
@@ -324,6 +326,7 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 4bbe8fc969e61e62f408de98faac676468e155b3
   CocoaLumberjack: 205769c032b5fef85b92472046bcc8b7e7c8a817
   CPAProxy: c3df549999514de2c04633d20a79b00daf627ddb
+  CTAssetsPickerController: 32b02079e2dd41c76fbc63740f4638ced71b7d1b
   Facebook-iOS-SDK: 18c26e86ab25c17854a2ee2a8f60562099c6600f
   gtm-http-fetcher: 5072f07e523261f7a87df939d13c1be2340d8111
   gtm-oauth2: dfb3016b8347b73fa80042e5aed29ec4f36e46bc
